@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: Sub
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver  # Old Driver - com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test1
+    username: root
+    password: password_1
+
+mybatis-plus:
+  # 如果写来java configuration类，那无需下面xml配置
+  config-location: classpath:mybatis-config.xml
+  # 指定 Mapper.xml 文件路径
+  # * 表示可以扫码classpath下面所有xml文件
+  mapper-locations: classpath*:mybatis/*.xml
+  # 配置扫描包，这样在mapper.xml就不用指定包.类名 - com.pojo.User
+  type-aliases-package: com.pojo
+  # 全局ID生成策略为 Auto - 自增
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1     #逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 #逻辑未删除值(默认为 1)

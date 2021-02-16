@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 设置命名空间，可以与不同表的同类型操作进行区分，使用时以“空间名称.id”的方式调用 -->
+<mapper namespace="com.mapper.UserMapper">
+    <resultMap type="User" id="userResult">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="age" property="age"/>
+    </resultMap>
+
+    <!-- 根据name查出信息，参数的类型是String，返回的结果是User类 -->
+    <select id="findUserByName" parameterType="com.pojo.User" resultMap="userResult">
+		SELECT * FROM t_user WHERE name=#{name}
+	</select>
+
+</mapper>
